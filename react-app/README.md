@@ -1,3 +1,5 @@
+생활코딩 리액트 강의 7까지 들음
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
