@@ -3,12 +3,14 @@ import styles from "../../assets/css/main.module.css";
 import background from "../../assets/labtop.gif";
 import TheHeader from "./TheHeader";
 import UserLogin from "./UserLogin";
+import UserSignUp from "./UserSignUp";
 
 export default function Main() {
 	return (
 		<div className="App">
 			<TheHeader></TheHeader>
-			<UserLogin></UserLogin>
+			<UserSignUp></UserSignUp>
+			{/* <UserLogin></UserLogin> */}
 			<div
 				style={{
 					paddingTop: "80px",
@@ -23,7 +25,6 @@ export default function Main() {
 				<Link to="/storyCreatePage">
 					<button className={styles.btn1}>TRY</button>
 				</Link>
-				
 			</div>
 		</div>
 	);
