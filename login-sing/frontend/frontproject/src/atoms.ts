@@ -6,6 +6,12 @@ export const userId = atom({
   default: 1,
 })
 
+//로그인 된 사용자 닉네임
+export const userNickName = atom({
+  key: 'userNickName',
+  default: 1,
+})
+
 export const ImageBit = atom({
   key: 'ImageBit',
   default: '',

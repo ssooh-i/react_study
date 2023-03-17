@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 import styles from "../../assets/css/main.module.css";
 import background from "../../assets/labtop.gif";
 import TheHeader from "./TheHeader";
-import UserLogin from "./UserLogin";
-import UserSignUp from "./UserSignUp";
+import UserSignIn from "../../pages/UserSignIn";
+import UserSignUp from "../../pages/UserSignUp";
 
 export default function Main() {
 	return (
 		<div className="App">
 			<TheHeader></TheHeader>
 			<UserSignUp></UserSignUp>
-			{/* <UserLogin></UserLogin> */}
+			{/* <UserSignIn></UserSignIn> */}
 			<div
 				style={{
 					paddingTop: "80px",

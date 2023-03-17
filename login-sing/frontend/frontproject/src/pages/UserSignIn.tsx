@@ -2,7 +2,7 @@
 import { LockClosedIcon } from '@heroicons/react/20/solid'
 import style from '../../assets/css/UserLogin.module.css'
 
-const UserLogin = () =>{
+const UserSignIn = () =>{
   return (
     <>
       <div className= "flex items-center justify-center min-h-full px-4 py-12 sm:px-6 lg:px-8"
@@ -93,4 +93,4 @@ const UserLogin = () =>{
 }
 
 
-export default UserLogin;
+export default UserSignIn;
