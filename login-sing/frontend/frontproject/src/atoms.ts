@@ -1,36 +1,36 @@
-import { atom } from 'recoil'
+import { atom } from "recoil";
 
 //로그인 된 사용자
 export const userId = atom({
-  key: 'userId',
-  default: 1,
-})
+	key: "userId",
+	default: 1,
+});
 
 //로그인 된 사용자 닉네임
 export const userNickName = atom({
-  key: 'userNickName',
-  default: 1,
-})
+	key: "userNickName",
+	default: 1,
+});
 
 export const ImageBit = atom({
-  key: 'ImageBit',
-  default: '',
-})
+	key: "ImageBit",
+	default: "",
+});
 
 export const ImageFile = atom({
-  key: 'ImageFile',
-  default: '',
-})
+	key: "ImageFile",
+	default: "",
+});
 //장르
 export const genreAtom = atom({
-  key: 'genreAtom',
-  default: '',
-})
+	key: "genreAtom",
+	default: "",
+});
 //로딩
 export const loadingAtom = atom({
-  key: 'loadingAtom',
-  default: false,
-})
+	key: "loadingAtom",
+	default: false,
+});
 // 영어 이야기 생성 결과
 export const storyEn = atom({
 	key: "storyEn",
@@ -48,7 +48,23 @@ export const voiceAtom = atom({
 });
 // 모달 상태
 export const modalState = atom({
-  key: 'modalState',
-  default: false,
+	key: "modalState",
+	default: false,
 });
 
+//회원가입 관련
+//이메일
+export const emailAtom = atom({
+	key: "emailAtom",
+	default: "",
+});
+//비번
+export const pwdAtom = atom({
+	key: "pwdAtom",
+	default: "",
+});
+//닉네임
+export const nickAtom = atom({
+	key: "nickAtom",
+	default: "",
+});
