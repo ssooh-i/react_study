@@ -1,5 +1,6 @@
 import { LockClosedIcon } from "@heroicons/react/20/solid";
-import styles from "../assets/css/UserSignIn.module.css";
+import styles from "../../assets/css/UserSignIn.module.css";
+
 const UserSignIn = () => {
 	return (
 		<>

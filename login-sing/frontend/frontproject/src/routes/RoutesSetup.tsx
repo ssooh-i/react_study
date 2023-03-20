@@ -1,8 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Main from "../components/main/main";
-import Register from "../pages/Register";
-import UserSignIn from "../pages/UserSignIn";
-import UserSignUp from "../pages/UserSignUp";
+import UserSignIn from "../components/user/UserSignIn";
+import UserSignUp from "../components/user/UserSignUp";
 import StoryCreatePage from "../pages/storyCreatePage";
 import StoryResultPage from "../pages/storyResultPage";
 import StoryDetailPage from "../pages/storyDetailPage";
@@ -15,7 +14,6 @@ export default function RoutesSetup() {
 			<Route path="/" element={<Main />}></Route>
 			<Route path="/signIn" element={<UserSignIn />}></Route>
 			<Route path="/signUp" element={<UserSignUp />}></Route>
-			<Route path="/Register" element={<Register />}></Route>
 			<Route path="/storyCreatePage" element={<StoryCreatePage />}></Route>
 			<Route path="/storyResult" element={<StoryResultPage />}></Route>
 			<Route path="/library" element={<LibraryPage />}></Route>

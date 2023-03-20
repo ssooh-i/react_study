@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import styles from "../../assets/css/main.module.css";
 import background from "../../assets/labtop.gif";
 import TheHeader from "./TheHeader";
-import UserSignIn from "../../pages/UserSignIn";
-import UserSignUp from "../../pages/UserSignUp";
+import UserSignIn from "../user/UserSignIn";
+import UserSignUp from "../user/UserSignUp";
 
 export default function Main() {
 	return (

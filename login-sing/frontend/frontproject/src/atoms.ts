@@ -52,19 +52,3 @@ export const modalState = atom({
 	default: false,
 });
 
-//회원가입 관련
-//이메일
-export const emailAtom = atom({
-	key: "emailAtom",
-	default: "",
-});
-//비번
-export const pwdAtom = atom({
-	key: "pwdAtom",
-	default: "",
-});
-//닉네임
-export const nickAtom = atom({
-	key: "nickAtom",
-	default: "",
-});

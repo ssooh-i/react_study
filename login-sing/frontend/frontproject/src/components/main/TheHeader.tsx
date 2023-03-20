@@ -10,6 +10,7 @@ const TheHeader = () => {
 				<nav className={styles.navigation}>
 					<ul>
 						<li className={styles.list}>단어장</li>
+						<li className={styles.list}>Login</li>
 						<li className={styles.list}>Logout</li>
 						<button>정보</button>
 					</ul>

@@ -11,9 +11,9 @@ export async function signup(
 	const response: AxiosResponse = await axios.post(
 		`${BASE_URL}/accounts/signup/`,
 		{
-			email: String,
-			password: String,
-			nickname: String,
+			email: email,
+			password: password,
+			nickname: nickname,
 		}
 	);
 	return response;
@@ -24,8 +24,8 @@ export async function login(email: string, password: string) {
 	const response: AxiosResponse = await axios.post(
 		`${BASE_URL}/accounts/login/`,
 		{
-			email: String,
-			password: String,
+			email: email,
+			password: password,
 		}
 	);
 	return response;
@@ -36,8 +36,8 @@ export async function resendCode(email: string, password: string) {
 	const response: AxiosResponse = await axios.post(
 		`${BASE_URL}/accounts/resend/code/`,
 		{
-			email: String,
-			password: String,
+			email: email,
+			password: password,
 		}
 	);
 	return response;
@@ -48,8 +48,8 @@ export async function userVerify(email: string, code: string) {
 	const response: AxiosResponse = await axios.post(
 		`${BASE_URL}/accounts/verify/email/`,
 		{
-			email: String,
-			code: String,
+			email: email,
+			code: code,
 		}
 	);
 	return response;
@@ -62,8 +62,8 @@ export async function refreshToken(email: string, code: string) {
 	const response: AxiosResponse = await axios.post(
 		`${BASE_URL}/accounts/token/refresh/`,
 		{
-			email: String,
-			code: String,
+			email: email,
+			code: code,
 		}
 	);
 	return response;
@@ -75,7 +75,7 @@ export async function nicknameCheck(nickname: string) {
 	return response;
 }
 
-//닉네임 중복 체크
+//이메일 중복 체크
 export async function emailCheck(email: string) {
 	const response: AxiosResponse = await axios.post(`/api/user/${email}`);
 	return response;
