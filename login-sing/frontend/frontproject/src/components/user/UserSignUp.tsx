@@ -108,15 +108,20 @@ const UserSignUp = () => {
 		console.log(email);
 		try {
 			const res = await emailCheck(email);
+				console.log("res.data:", res.data);
+				console.log("res.data.result:", res.data.result);
+			const { result } = res.data.result;
+			console.log("result", result);
 
-			const { result } = res.data;
 
 			if (!result) {
 				setEmailMsg("이미 등록된 메일입니다. 다시 입력해주세요.");
 				setCheckMail(false);
+				console.log(emailMsg);
 			} else {
 				setEmailMsg("사용 가능한 메일입니다.😊");
 				setCheckMail(true);
+				console.log(emailMsg);
 			}
 		} catch (err) {
 			console.log("email중복검사",err);
@@ -127,17 +132,19 @@ const UserSignUp = () => {
 		console.log(nickname);
 		try {
 			const res = await nicknameCheck(nickname);
-			const { result } = res.data;
+			const { result } = res.data.result;
 
 			if (!result) {
 				setNicknameMsg("이미 등록된 닉네임입니다. 다시 입력해주세요.");
 				setCheckNickname(false);
+				console.log(nicknameMsg);
 			} else {
 				setNicknameMsg("사용 가능한 닉네임입니다 😊");
 				setCheckNickname(true);
+				console.log(nicknameMsg);
 			}
 		} catch (err) {
-			console.log("닉네임 중복검사",err);
+			console.log("닉네임 중복검사", err);
 		}
 	};
 

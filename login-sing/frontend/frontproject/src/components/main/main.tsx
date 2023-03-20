@@ -9,8 +9,8 @@ export default function Main() {
 	return (
 		<div className="App">
 			<TheHeader></TheHeader>
-			<UserSignUp></UserSignUp>
 			{/* <UserSignIn></UserSignIn> */}
+			<UserSignUp></UserSignUp>
 			<div
 				style={{
 					paddingTop: "80px",

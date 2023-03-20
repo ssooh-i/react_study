@@ -71,18 +71,23 @@ export async function refreshToken(email: string, code: string) {
 
 //닉네임 중복 체크
 export async function nicknameCheck(nickname: string) {
-	const response: AxiosResponse = await axios.post(`/api/user/${nickname}`);
+	const response: AxiosResponse = await axios.post(`${BASE_URL}/accounts/check/duplicate/nickname/`,{
+		nickname: nickname,
+	}
+);
 	return response;
 }
 
 //이메일 중복 체크
 export async function emailCheck(email: string) {
-	const response: AxiosResponse = await axios.post(`/api/user/${email}`);
+	const response: AxiosResponse = await axios.post(`${BASE_URL}/accounts/check/duplicate/email/`, {
+		email: email,
+	});
 	return response;
 }
 
 // 유저 삭제
 export async function deleteUser(id: number) {
-	const response: AxiosResponse = await axios.delete(`/api/user/${id}`);
+	const response: AxiosResponse = await axios.delete(`${BASE_URL}/user/${id}/`);
 	return response;
 }
