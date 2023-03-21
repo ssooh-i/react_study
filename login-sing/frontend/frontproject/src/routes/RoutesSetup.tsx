@@ -7,11 +7,13 @@ import StoryResultPage from "../pages/storyResultPage";
 import StoryDetailPage from "../pages/storyDetailPage";
 import LibraryPage from "../pages/LibraryPage";
 import Loading from "../components/storyCreate/loading";
+import UserPage from "../pages/userPage";
 
 export default function RoutesSetup() {
 	return (
 		<Routes>
 			<Route path="/" element={<Main />}></Route>
+			<Route path="/user" element={<UserPage />}></Route>
 			<Route path="/signIn" element={<UserSignIn />}></Route>
 			<Route path="/signUp" element={<UserSignUp />}></Route>
 			<Route path="/storyCreatePage" element={<StoryCreatePage />}></Route>
