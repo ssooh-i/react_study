@@ -26,6 +26,11 @@ export async function login(email: string, password: string) {
 		{
 			email: email,
 			password: password,
+			// 특정 요청에 쿠키를 추가하는 경우
+			headers: {
+				"Cookie": document.cookie
+			},
+			withCredentials: true,
 		}
 	);
 	return response;

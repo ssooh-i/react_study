@@ -1,3 +1,4 @@
+
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import styles from "../../assets/css/UserSignUp.module.css";
 import React, { useState, useCallback, ChangeEvent } from "react";
@@ -154,10 +155,10 @@ const UserSignUp = () => {
 		e.preventDefault();
 
 		try {
-			const apiResult = await signup(email, password, nickname);
-			console.log("apiResult.data", apiResult.data);
+			const res = await signup(email, password, nickname);
+			console.log("res.data", res.data);
 
-			const { result } = apiResult.data;
+			const { result } = res.data;
 
 			if (result) {
 				//loginPage로 이동하기
@@ -283,13 +284,13 @@ const onNickMsgHandler = () => alert(nicknameMsg);
 						</div>
 						
 						<div className={styles.divCenter}>
-      <div className={styles.codeCheck}>
-        <input type="text" required className={styles.input}></input>
-        <label>인증코드</label>
-        <span></span>
-      </div>
-      <button type="button" className={styles.checkBtn}>이메일 인증 확인</button>
-    </div>
+							<div className={styles.codeCheck}>
+								<input type="text" required className={styles.input}></input>
+								<label>인증코드</label>
+								<span></span>
+							</div>
+							<button type="button" className={styles.checkBtn}>이메일 인증 확인</button>
+						</div>
 						<div>
 							<button
 								// type="submit"
@@ -297,7 +298,7 @@ const onNickMsgHandler = () => alert(nicknameMsg);
 								onClick={onSubmit}
 								// disabled={!isAllValid}
 							>
-								<span className="absolute inset-y-0 left-0 flex items-center pl-3">
+								<span className="absolute inset-y-0 left-0 flex items-center">
 									<LockClosedIcon
 										className="w-5 h-5 text-indigo-500 group-hover:text-indigo-400"
 										aria-hidden="true"
@@ -315,7 +316,7 @@ const onNickMsgHandler = () => alert(nicknameMsg);
 								type="submit"
 								className="relative flex justify-center w-full px-3 py-2 text-sm font-semibold text-white bg-yellow-600 rounded-md group hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
 							>
-								<span className="absolute inset-y-0 left-0 flex items-center pl-3">
+								<span className="absolute inset-y-0 left-0 flex items-center">
 									<LockClosedIcon
 										className="w-5 h-5 text-yellow-500 group-hover:text-yellow-400"
 										aria-hidden="true"
