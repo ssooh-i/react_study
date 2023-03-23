@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-const BASE_URL = "http://192.168.100.166:8000/api"; // 연결할 서버 ip주소로 바꾸기
+const BASE_URL = "http://192.168.100.140:8000/api"; // 연결할 서버 ip주소로 바꾸기
 
 // 회원가입 요청
 export async function signup(
@@ -26,10 +26,6 @@ export async function login(email: string, password: string) {
 		{
 			email: email,
 			password: password,
-			// 특정 요청에 쿠키를 추가하는 경우
-			headers: {
-				"Cookie": document.cookie
-			},
 			withCredentials: true,
 		}
 	);
@@ -76,23 +72,33 @@ export async function refreshToken(email: string, code: string) {
 
 //닉네임 중복 체크
 export async function nicknameCheck(nickname: string) {
-	const response: AxiosResponse = await axios.post(`${BASE_URL}/accounts/check/duplicate/nickname/`,{
-		nickname: nickname,
-	}
-);
+	const response: AxiosResponse = await axios.post(
+		`${BASE_URL}/accounts/check/duplicate/nickname/`,
+		{
+			nickname: nickname,
+		}
+	);
 	return response;
 }
 
 //이메일 중복 체크
 export async function emailCheck(email: string) {
-	const response: AxiosResponse = await axios.post(`${BASE_URL}/accounts/check/duplicate/email/`, {
-		email: email,
-	});
+	const response: AxiosResponse = await axios.post(
+		`${BASE_URL}/accounts/check/duplicate/email/`,
+		{
+			email: email,
+		}
+	);
 	return response;
 }
 
 // 유저 삭제
 export async function deleteUser(id: number) {
 	const response: AxiosResponse = await axios.delete(`${BASE_URL}/user/${id}/`);
+	return response;
+}
+
+export async function getTest() {
+	const response: AxiosResponse = await axios.get(`${BASE_URL}/accounts/test/`);
 	return response;
 }

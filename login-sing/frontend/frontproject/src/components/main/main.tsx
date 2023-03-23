@@ -6,7 +6,7 @@ import TheHeader from "./TheHeader";
 export default function Main() {
 	return (
 		<div className="App">
-			<TheHeader></TheHeader>
+			{/* <TheHeader></TheHeader> */}
 			<div
 				style={{
 					paddingTop: "80px",

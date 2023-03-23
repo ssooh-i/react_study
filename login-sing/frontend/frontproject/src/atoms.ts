@@ -7,6 +7,12 @@ export const userId = atom({
 });
 
 //로그인 된 사용자 닉네임
+export const userEmail = atom({
+	key: "userEmail",
+	default: "",
+});
+
+//로그인 된 사용자 닉네임
 export const userNickName = atom({
 	key: "userNickName",
 	default: "",
@@ -51,4 +57,3 @@ export const modalState = atom({
 	key: "modalState",
 	default: false,
 });
-

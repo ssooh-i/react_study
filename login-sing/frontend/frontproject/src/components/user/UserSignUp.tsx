@@ -1,4 +1,3 @@
-
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import styles from "../../assets/css/UserSignUp.module.css";
 import React, { useState, useCallback, ChangeEvent } from "react";
@@ -6,6 +5,7 @@ import React, { useState, useCallback, ChangeEvent } from "react";
 import { nicknameCheck, signup, emailCheck } from "../../api/userAPI";
 import { Route } from "react-router-dom";
 import UserSignIn from "../user/UserSignIn";
+import Login from "./Login";
 
 //email 유효성 검사 양식
 const validateEmail = (email: string) => {
@@ -15,6 +15,7 @@ const validateEmail = (email: string) => {
 			/([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
 		);
 };
+console.log("validateEmail=", validateEmail);
 
 //password 유효성 검사 양식
 const validatePwd = (password: string) => {
@@ -42,6 +43,7 @@ const UserSignUp = () => {
 
 	//위에 있는 유효성 검사 함수로 정리하기
 	const isEmailValid = validateEmail(email);
+	console.log("isEmailValid=", isEmailValid);
 	const isPwdValid = validatePwd(password);
 	const isConfirmPwd = password === confirmPwd; //입력된 비밀번호와 비밀번호 확인 검사
 	const isNicknameValid = validateNickname(nickname);
@@ -50,7 +52,6 @@ const UserSignUp = () => {
 	const onChangeEmail = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
 			const currEmail: string = e.target.value;
-			
 
 			if (!validateEmail(currEmail)) {
 				setEmailMsg("이메일 형식이 올바르지 않습니다.");
@@ -62,22 +63,25 @@ const UserSignUp = () => {
 		[setEmail, validateEmail, setEmailMsg]
 	);
 	//비밀번호 유효성 확인
-	const onChangePwd = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-		const currPwd: string = e.target.value;
+	const onChangePwd = useCallback(
+		(e: ChangeEvent<HTMLInputElement>) => {
+			const currPwd: string = e.target.value;
 
-		if (!validatePwd(currPwd)) {
-			setPwdMsg("영문, 숫자, 특수기호 조합으로 8자리 이상 입력해주세요.");
-		} else {
-			setPwdMsg("안전한 비밀번호입니다.");
-			setPassword(currPwd);
-		}
-	}, []);
+			if (!validatePwd(currPwd)) {
+				setPwdMsg("영문, 숫자, 특수기호 조합으로 8자리 이상 입력해주세요.");
+			} else {
+				setPwdMsg("안전한 비밀번호입니다.");
+				setPassword(currPwd);
+			}
+		},
+		[setPassword, validatePwd, setPassword]
+	);
 
 	//비밀번호 같은 지 확인
 	const onChangeConfirmPwd = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
 			const currConfirmPwd: string = e.target.value;
-			
+
 			if (currConfirmPwd !== password) {
 				setConfirmPwdMsg("비밀번호가 일치하지 않습니다.");
 			} else {
@@ -91,7 +95,7 @@ const UserSignUp = () => {
 	//닉네임 유효성 확인
 	const onChangeNickname = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		const currNickname: string = e.target.value;
-		
+
 		if (!validateNickname(currNickname)) {
 			setNicknameMsg("1글자 이상 9글자 미만으로 입력해주세요.");
 		} else {
@@ -109,11 +113,10 @@ const UserSignUp = () => {
 		console.log(email);
 		try {
 			const res = await emailCheck(email);
-				console.log("res.data:", res.data);
-				console.log("res.data.result:", res.data.result);
+			console.log("res.data:", res.data);
+			console.log("res.data.result:", res.data.result);
 			const { result } = res.data.result;
 			console.log("result", result);
-
 
 			if (!result) {
 				setEmailMsg("이미 등록된 메일입니다. 다시 입력해주세요.");
@@ -125,7 +128,7 @@ const UserSignUp = () => {
 				console.log(emailMsg);
 			}
 		} catch (err) {
-			console.log("email중복검사",err);
+			console.log("email중복검사", err);
 		}
 	};
 	//닉네임 중복검사
@@ -151,7 +154,7 @@ const UserSignUp = () => {
 
 	//가입하기 요청
 	// const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-	const onSubmit = async (e:any) => {
+	const onSubmit = async (e: any) => {
 		e.preventDefault();
 
 		try {
@@ -163,7 +166,7 @@ const UserSignUp = () => {
 			if (result) {
 				//loginPage로 이동하기
 				alert("회원가입 완료!!");
-				<Route path="/" element={<UserSignIn />}></Route>;
+				<Route path="/" element={<Login />}></Route>;
 			}
 		} catch (err) {
 			alert("회원가입 실패!!");
@@ -171,11 +174,11 @@ const UserSignUp = () => {
 		}
 	};
 
-//앞에서 선언한 msg들 클릭이벤트핸들러
-const onEmailMsgHandler = () => alert(emailMsg);
-const onpwdMsgHandler = () => alert(pwdMsg);
-const onConfirmPwdMsgHandler = () => alert(confirmPwdMsg);
-const onNickMsgHandler = () => alert(nicknameMsg);
+	//앞에서 선언한 msg들 클릭이벤트핸들러
+	const onEmailMsgHandler = () => alert(emailMsg);
+	const onpwdMsgHandler = () => alert(pwdMsg);
+	const onConfirmPwdMsgHandler = () => alert(confirmPwdMsg);
+	const onNickMsgHandler = () => alert(nicknameMsg);
 
 	// 가입 버튼 활성화
 	// 앞에 정리한 유효성 검사를 한번에 묶어주고
@@ -205,7 +208,7 @@ const onNickMsgHandler = () => alert(nicknameMsg);
 						<div className={styles.hrSign}>Sign UP</div>
 					</div>
 					{/* <form className="mt-8 space-y-6" action="#" method="POST" onSubmit={onSubmit}> */}
-					<form className="mt-8 space-y-6" action="#" method="POST" >
+					<form className="mt-8 space-y-6" action="#" method="POST">
 						<input type="hidden" name="remember" defaultValue="true" />
 						<div className="-space-y-px rounded-md shadow-sm">
 							<div>
@@ -222,9 +225,15 @@ const onNickMsgHandler = () => alert(nicknameMsg);
 									placeholder="Email address"
 									onChange={onChangeEmail}
 								/>
-								<button onClick={() => {onCheckEmail(); onEmailMsgHandler();}} className="px-4 py-2 m-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900">
+								<button
+									onClick={() => {
+										onCheckEmail();
+										onEmailMsgHandler();
+									}}
+									className="px-4 py-2 m-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900"
+								>
 									이메일 중복 검사
-  							</button>
+								</button>
 							</div>
 
 							<div>
@@ -241,9 +250,12 @@ const onNickMsgHandler = () => alert(nicknameMsg);
 									placeholder="Password"
 									onChange={onChangePwd}
 								/>
-							<button onClick={onpwdMsgHandler} className="px-4 py-2 m-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900">
-								비밀번호 확인
-  						</button>
+								<button
+									onClick={onpwdMsgHandler}
+									className="px-4 py-2 m-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900"
+								>
+									비밀번호 확인
+								</button>
 							</div>
 							<div>
 								<label htmlFor="password" className="sr-only">
@@ -260,9 +272,12 @@ const onNickMsgHandler = () => alert(nicknameMsg);
 									onChange={onChangeConfirmPwd}
 								/>
 							</div>
-							<button onClick={onConfirmPwdMsgHandler} className="px-4 py-2 m-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900">
+							<button
+								onClick={onConfirmPwdMsgHandler}
+								className="px-4 py-2 m-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900"
+							>
 								비밀번호 재 확인
-  						</button>
+							</button>
 						</div>
 						<div>
 							<label htmlFor="nickname" className="sr-only">
@@ -278,19 +293,27 @@ const onNickMsgHandler = () => alert(nicknameMsg);
 								placeholder="your nickname "
 								onChange={onChangeNickname}
 							/>
-							<button onClick={() => {onCheckNickname(); onNickMsgHandler();}} className="px-4 py-2 m-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900">
-							닉네임 중복 검사
-  						</button>
+							<button
+								onClick={() => {
+									onCheckNickname();
+									onNickMsgHandler();
+								}}
+								className="px-4 py-2 m-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900"
+							>
+								닉네임 중복 검사
+							</button>
 						</div>
-						
+						{/* 
 						<div className={styles.divCenter}>
 							<div className={styles.codeCheck}>
 								<input type="text" required className={styles.input}></input>
 								<label>인증코드</label>
 								<span></span>
 							</div>
-							<button type="button" className={styles.checkBtn}>이메일 인증 확인</button>
-						</div>
+							<button type="button" className={styles.checkBtn}>
+								이메일 인증 확인
+							</button>
+						</div> */}
 						<div>
 							<button
 								// type="submit"
