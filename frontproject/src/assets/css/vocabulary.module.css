@@ -1,0 +1,61 @@
+.container {
+  text-align: center;
+  margin: 100px;
+  padding: 0 400px;
+}
+
+.sortBtn {
+  margin: 20px 0;
+  float: right;
+  color: rgb(255, 255, 255);
+  /* border: 1px solid rgb(255, 26, 137); */
+  background-color: rgb(255, 26, 137);
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.sortBtn:hover {
+  margin: 20px 0;
+  float: right;
+  color: rgb(255, 26, 137);
+  /* border: 1px solid rgb(255, 26, 137); */
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.word_table {
+  margin: 0 auto;
+}
+
+.table_row {
+  /* margin: 50px; */
+}
+
+.word,
+.mean {
+  font-size: 20px;
+  padding: 30px;
+}
+
+.clear {
+  clear: both;
+}
+.red {
+  background: #fb4e88;
+}
+.orange {
+  background: #ff9634;
+}
+.yellow {
+  background: #f9da5b;
+}
+.green {
+  background: #37d51f;
+}
+.blue {
+  background: #2279dc;
+}
+.purple {
+  background: #cb39ec;
+}
