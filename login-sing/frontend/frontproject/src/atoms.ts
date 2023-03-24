@@ -18,6 +18,17 @@ export const userNickName = atom({
 	default: "",
 });
 
+//로그인된 유저 토큰
+export const accessToken = atom({
+	key: "accessToken",
+	default: "",
+});
+
+export const refreshToken = atom({
+	key: "refreshToken",
+	default: "",
+});
+
 export const ImageBit = atom({
 	key: "ImageBit",
 	default: "",

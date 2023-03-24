@@ -15,7 +15,6 @@ const validateEmail = (email: string) => {
 			/([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
 		);
 };
-console.log("validateEmail=", validateEmail);
 
 //password 유효성 검사 양식
 const validatePwd = (password: string) => {

@@ -1,19 +1,22 @@
-import axios from "axios";
 import React, { useState, useCallback, ChangeEvent, useRef } from "react";
-import { useNavigate, Route } from "react-router-dom";
-import Main from "../main/main";
+import { useNavigate } from "react-router-dom";
 import { getTest, login } from "../../api/userAPI";
-import { userEmail, userNickName } from "../../atoms";
+import {
+	userEmail,
+	userNickName,
+	accessToken,
+	refreshToken,
+} from "../../atoms";
 import { useRecoilState } from "recoil";
-import { useCookies } from "react-cookie";
-import { setCookie, getCookie, removeCookie } from "../../assets/cookie";
 
 const Login: React.FC = () => {
-	const [cookies, setCookie] = useCookies(["cookie"]); //쿠키 훅
+	// const [cookies, setCookie] = useCookies(["cookie"]); //쿠키 훅
 	const navigate = useNavigate();
 
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
+	const [access_token, setAccessToken] = useRecoilState<string>(accessToken);
+	const [refesh_token, setRefeshToken] = useRecoilState<string>(refreshToken);
 
 	const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
 	// const isEmailValid = useRef(null);
@@ -107,8 +110,8 @@ const Login: React.FC = () => {
 		// e.preventDefault();
 		try {
 			const res = await login(email, password);
-			console.log("res", res);
-			console.log("res.data", res.data);
+			console.log("res 로그인", res);
+			console.log("res.data 로그인 ", res.data);
 
 			const result = res.data;
 			console.log("result", result);
@@ -118,7 +121,20 @@ const Login: React.FC = () => {
 				console.log(res);
 				sessionStorage.setItem("userEmail", result.email);
 				sessionStorage.setItem("userNick", result.nickname);
-				// onLoginSuccess(res.headers.get("access_token"));
+				localStorage.setItem(
+					"access_token",
+					JSON.stringify(result.access_token)
+				);
+				localStorage.setItem(
+					"refresh_token",
+					JSON.stringify(result.refresh_token)
+				);
+				console.log("토큰 들어옴, 로컬스토리지 확인!");
+				const atoken = res.data.access_token;
+				const rtoken = res.data.refresh_token;
+				setAccessToken(atoken);
+				setRefeshToken(rtoken);
+
 				navigate("/");
 			}
 		} catch (error) {
